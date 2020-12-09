@@ -10,7 +10,7 @@ const app = express();
 const url = "http://quotes.toscrape.com/page/";
 const urlAuthor = "http://quotes.toscrape.com/author/";
 
-app.get("/author:authorName", async (req, res) => {
+app.get("/api/author:authorName", async (req, res) => {
   const Name = req.params.authorName;
   try {
     const { data } = await axios.get(urlAuthor + Name);
@@ -40,7 +40,7 @@ app.get("/author:authorName", async (req, res) => {
   }
 });
 
-app.get("/:id", async (req, res) => {
+app.get("/api/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
@@ -52,6 +52,7 @@ app.get("/:id", async (req, res) => {
     response.each((i, element) => {
       $element = $(element);
       const quotes = {};
+      quotes.id = i;
       quotes.quoteText = $element.find(".text").text().trim();
       quotes.author = $element.find(".author").text().trim();
       quotes.authorLink = $element.find("span").children().last().attr("href");

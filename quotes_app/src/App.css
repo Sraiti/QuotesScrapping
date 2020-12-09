@@ -1,38 +1,119 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  height: 100vh;
+  font-family: "Philosopher", sans-serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/*Nav Bar*/
+.navbar {
+  grid-area: header;
+  background: #a058ae;
+  height: 70px;
   color: white;
 }
+.container {
+  padding: 0 40px;
+  margin: 0 auto;
+  overflow: auto;
+  max-width: 1100px;
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+main {
+  grid-area: main;
+  grid-template-columns: 1fr;
+}
+footer {
+  grid-area: footer;
+  padding: 40px;
+}
+.quote {
+  display: grid;
+  grid-template-areas:
+    "quotetext copybtn"
+    ". author";
+  border-bottom: 1px solid gray;
 
-.App-link {
-  color: #61dafb;
+  margin: 2em;
+}
+.quoteText {
+  grid-area: quotetext;
+  padding: 20px;
+}
+.copybtn {
+  display: grid;
+  grid-area: copybtn;
+  justify-content: end;
+}
+.author {
+  grid-area: author;
+  color: #a058ae;
+  padding: 20px;
+  justify-content: end;
+  display: grid;
+  text-decoration: underline;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pagination {
+  display: inline-block;
+}
+
+.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.pagination li.active {
+  background-color: #a058ae;
+  color: white;
+}
+.pagination ul {
+  list-style: none;
+}
+.pagination a {
+  text-decoration: none;
+  color: black;
+}
+.pagination a.active {
+  color: white;
+}
+.pagination li:hover:not(.active) {
+  background-color: #ddd;
+}
+.btn {
+  background-color: #f1f1f1;
+  color: #a058ae;
+  font-size: 16px;
+  padding: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.authorCard {
+  display: grid;
+  grid-row: 1fr 1fr 5fr;
+  gap: 25px;
+  grid-template-areas:
+    "authorName"
+    "authorDetails"
+    "authorDescription";
+
+  margin: 2em;
+}
+.authorDetails {
+  grid-area: authorDetails;
+}
+.authorDescription {
+  grid-area: authorDescription;
+}
+.authorName {
+  grid-area: authorName;
 }
